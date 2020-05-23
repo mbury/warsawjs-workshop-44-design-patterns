@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  table
+    tr
+      th Zamówienie
+      th Samochód
+      th Kaucja
+      th Status
+    each rental in rentals
+      tr
+        td= rental.rental_id 
+        td        
+          span #{rental.car_id} 
+          br 
+          a(href=`/rentals/${rental.rental_id}/take-car`) odbierz 
+          a(href=`/rentals/${rental.rental_id}/return-car`) zwróć 
+        td
+          span #{rental.deposit} 
+          br
+          a(href=`/rentals/${rental.rental_id}/pay-deposit`) opłać 
+          a(href=`/rentals/${rental.rental_id}/return-deposit`) dobierz
+        td= rental.state
